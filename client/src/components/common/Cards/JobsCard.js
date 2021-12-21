@@ -1,5 +1,5 @@
 import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { EditOutlined, EllipsisOutlined, SettingOutlined, ClockCircleOutlined, CalendarOutlined } from '@ant-design/icons';
 import styled from "styled-components";
 import SettingsIcon from '@mui/icons-material/Settings';
 
@@ -24,15 +24,7 @@ export default function componentName({ toggleModal, job }) {
         <>
             <CustomCard
                 style={{ width: 350 }}
-                // cover={
-
-                //     // <img
-                //     //     alt="example"
-                //     //     src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                //     // />
-                // }
                 actions={[
-                    // <SettingsIcon key="setting" style={styles.icons} />,
                     <CustomSettingOutlined key="setting" style={styles.icons} />,
                     <CustomEditOutlinedOutlined key="edit" onClick={() => toggleModal(job)} />,
                     <EllipsisOutlined key="ellipsis" />,
@@ -45,7 +37,9 @@ export default function componentName({ toggleModal, job }) {
                     description=""
                 />
                 <CardContent>{job.body}</CardContent>
-                <CardSubTitle>Unilever Nigeria</CardSubTitle>
+                <CardSubTitle><ClockCircleOutlined /> {job.date}</CardSubTitle>
+                <CardSubTitleTime><CalendarOutlined /> {job.time}</CardSubTitleTime>
+
             </CustomCard>
 
         </>
@@ -79,6 +73,19 @@ const CardSubTitle = styled.div`
     font-weight: 600;
     color: grey;
     padding-top: 20px ;
+    font-size: 12px;
+    padding-bottom:0px;
+    margin-bottom: 0px;
+    font-style: italic;
+`
+
+const CardSubTitleTime = styled.div`
+    text-align:  justify ;
+    font-weight: 600;
+    color: #F4B745;
+    font-size: 12px;
+    padding-top: 5px ;
+    padding-bottom: 0px ;
     font-style: italic;
 `
 

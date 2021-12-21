@@ -10,25 +10,34 @@ export default function Login({ setToken }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const loginUser = async (credentials) => {
-        return fetch('http://localhost:8080/login', {
+        return fetch('http://localhost:3020/api/v1/user/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(credentials)
-        }).then(data => data.json())
+        }).then(data => {
+            console.log("Data is ", data);
+            return data.json()
+        })
     }
 
     const submitForm = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         try {
             if (email.length === 0 || password.length < 8) toast.error("Password must be at least 8 characters")
             const token = await loginUser({ email, password })
+            console.log("token it ", token)
             setToken(token)
+            setLoading(false)
         } catch (error) {
+            toast.error(`email or password is incorrect`)
             console.log(error)
             setError(error.message)
+            setLoading(false)
         }
 
     }
@@ -43,9 +52,9 @@ export default function Login({ setToken }) {
 
                     <LoginForm onSubmit={submitForm} >
                         <InputContainer>
-                            <InputField placeholder="Email \ email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                            <InputField placeholder="Email \ email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-                            <InputField placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <InputField placeholder="Password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
 
                             <SubmitButton onClick={submitForm} >Login</SubmitButton>
                         </InputContainer>
