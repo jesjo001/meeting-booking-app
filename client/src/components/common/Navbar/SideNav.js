@@ -11,6 +11,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     width: 256,
+    paddingTop: "100px"
   },
   image: {
     display: 'flex',
@@ -48,31 +49,21 @@ const styles = {
 }
 
 const dataCategory = [
-  { id: "0", name: "Business development", count: "20" },
-  { id: "1", name: "Customer support", count: "10" },
-  { id: "2", name: "Design & development", count: "30" },
-  { id: "3", name: "Finance", count: "50" },
-  { id: "4", name: "Human Resources", count: "50" },
-  { id: "5", name: "Marketing", count: "10" },
-  { id: "6", name: "Sales", count: "20" },
+  { id: "0", name: "Mr Adeshina", count: "20" },
+  { id: "1", name: "Highest Authority", count: "10" },
+  { id: "2", name: "Governors Meetings", count: "30" },
+  { id: "3", name: "CEO Fintech", count: "50" },
+  { id: "4", name: "NNPC Chairman", count: "50" },
+  { id: "5", name: "Pastors forum", count: "10" },
+  { id: "6", name: "Counseling (Mr Adenuga)", count: "20" },
   { id: "7", name: "Project Management", count: "60" },
   { id: "8", name: "Education / Teaching", count: "120" },
-  { id: "9", name: "Information Technology", count: "220" },
-  { id: "10", name: "Journalism", count: "320" },
-  { id: "11", name: "Health Sector", count: "120" },
-  { id: "12", name: "Law", count: "20" },
-  { id: "13", name: "Engineering ", count: "220" },
-  { id: "14", name: "Civil Service ", count: "320" },
-  { id: "15", name: "Makeup Artist", count: "250" },
-  { id: "16", name: "Others", count: "20" },
 ]
 
 const dataType = [
-  { id: "0", name: "Full Time", count: "200" },
-  { id: "1", name: "Part Time", count: "50" },
-  { id: "2", name: "Contract", count: "130" },
-  { id: "3", name: "Remote", count: "500" },
-
+  { id: "0", name: "All ", count: "200" },
+  { id: "1", name: "Upcoming Today", count: "50" },
+  { id: "2", name: "This month ", count: "130" },
 ]
 
 export default function SideNav() {
@@ -118,15 +109,14 @@ export default function SideNav() {
       defaultSelectedKeys={['1']}
       defaultOpenKeys={['sub1', 'sub2']}
       mode="inline"
-
     >
       <LogoContainer >
         <img style={styles.image} src="https://joeschmoe.io/api/v1/random" />
       </LogoContainer>
-      <SubMenu key="sub1" title="Job Category" icon={<DatabaseOutlined />} style={styles.menuTitle}>
+      <SubMenu key="sub1" title="My Appointments" icon={<DatabaseOutlined />} style={styles.menuTitle}>
         {displayCategories()}
       </SubMenu>
-      <SubMenu key="sub2" icon={<AppstoreOutlined />} style={styles.menuTitle} title="Job Type">
+      <SubMenu key="sub2" icon={<AppstoreOutlined />} style={styles.menuTitle} title="Category">
         {displayType()}
       </SubMenu>
     </Menu>

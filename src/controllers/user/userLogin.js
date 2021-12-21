@@ -10,7 +10,7 @@ export const userLogin = async (req, res) => {
     const { email, password } = req.body;
 
     // Validate user input
-    if (!(email && password)) return res.status(400).send("email and password is required");
+    if (!(email && password)) return res.status(400).json({ message: "email and password is required", statusCode: 400 });
 
     // Validate if user exist in our database
     const user = await User.findOne({ email });

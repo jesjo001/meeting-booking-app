@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/common/Navbar/Navbar";
 import Footer from "./components/common/Footer";
 import Dashboard from "./pages/Dashboard";
 import AboutUs from "./pages/AboutUs";
@@ -14,6 +13,8 @@ import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import RecruiterRegister from "./pages/Auth/RecruiterRegister";
 import 'antd/dist/antd.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,6 +32,17 @@ ReactDOM.render(
           <Route path="/aboutus" element={<AboutUs />} />
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
