@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    courses: {
+        type: Array,
+        required: true
+    },
     dob: {
         type: Date,
         required: false

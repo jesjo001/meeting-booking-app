@@ -1,5 +1,6 @@
 import User from "../../models/User";
 import bcrypt from "bcrypt"
+import log from "../../logger";
 import jwt from 'jsonwebtoken';
 
 export const registerAdmin = async (req, res) => {
@@ -63,7 +64,8 @@ export const registerAdmin = async (req, res) => {
         res.status(201).json(currentUser);
 
     } catch (e) {
-        console.log(e)
+        //log error with logger which doesn't block i/o like console.log does
+        log.error(e);
         return res.status(500).json({
             statusCode: 500,
             message: "Internal server error"
